@@ -11437,7 +11437,7 @@ uint64_t wallet2::get_approximate_blockchain_height() const
   // time of v2 fork
   const time_t fork_time = m_nettype == TESTNET ? 1341378000 : m_nettype == STAGENET ? 1521000000 : 1538815057;
   // v2 fork block
-  const uint64_t fork_block = m_nettype == TESTNET ? 190060 : m_nettype == STAGENET ? 32000 : 307500;
+  const uint64_t fork_block = m_nettype == TESTNET ? 1100 : m_nettype == STAGENET ? 1000 : 307500;
   // avg seconds per block
   const int seconds_per_block = DIFFICULTY_TARGET_V6;
   // Calculated blockchain height

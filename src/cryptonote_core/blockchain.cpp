@@ -111,12 +111,12 @@ static const struct {
   { 1, 1, 0, 1341378000 },
 
   // versions 2-9 in rapid succession
-  { 6, 100, 0, 1523263057 },
-  { 7, 200, 0, 1530615600 },
-  { 8, 300, 0, 1562889600 },
-  { 9, 300, 0, 1595615809 }
+  { 6, 1100, 0, 1523263057 },
+  { 7, 1200, 0, 1530615600 },
+  { 8, 1300, 0, 1562889600 },
+  { 9, 1300, 0, 1595615809 }
 };
-static const uint64_t testnet_hard_fork_version_1_till = 99;
+static const uint64_t testnet_hard_fork_version_1_till = 1099;
 
 static const struct {
   uint8_t version;
@@ -128,14 +128,14 @@ static const struct {
   { 1, 1, 0, 1341378000 },
 
   // versions 2-9 in rapid succession from March 13th, 2018
-  { 2, 32000, 0, 1521000000 },
-  { 3, 33000, 0, 1521120000 },
-  { 4, 34000, 0, 1521240000 },
-  { 5, 35000, 0, 1521360000 },
-  { 6, 36000, 0, 1521480000 },
-  { 7, 37000, 0, 1521600000 },
-  { 8, 38000, 0, 1521800000 },
-  { 9, 39000, 0, 1522000000 },
+  { 2, 1000, 0, 1521000000 },
+  { 3, 1100, 0, 1521120000 },
+  { 4, 1200, 0, 1521240000 },
+  { 5, 1300, 0, 1521360000 },
+  { 6, 1400, 0, 1521480000 },
+  { 7, 1500, 0, 1521600000 },
+  { 8, 1600, 0, 1521800000 },
+  { 9, 1700, 0, 1522000000 },
 };
 
 //------------------------------------------------------------------
@@ -983,13 +983,13 @@ std::vector<time_t> Blockchain::get_last_block_timestamps(unsigned int blocks) c
 void Blockchain::normalize_v7_difficulties() {
 
   auto height = m_db->height();
-  const uint64_t v8height = m_nettype == TESTNET ? 446674 : 589169;
+  const uint64_t v8height = m_nettype == TESTNET ? 1300 : 589169;
 
   if(height != v8height) {
     return;
   }
 
-  const uint64_t v7height = m_nettype == TESTNET ? 215000 : 324500;
+  const uint64_t v7height = m_nettype == TESTNET ? 1200 : 324500;
   const size_t V7_DIFFICULTY_BLOCKS_COUNT = 735;
   const size_t V7_DIFFICULTY_TARGET = 120;
 
