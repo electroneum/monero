@@ -1,10 +1,10 @@
 name: electroneum
-version: 0.11.1.0
-summary: "Electroneum: the secure, private, untraceable cryptocurrency https://electroneum.com"
+version: '3.3.1.0'
+base: core20
+summary: "Electroneum: the secure, public, traceable cryptocurrency"
 description: |
-    Electroneum is a private, secure, untraceable, decentralised digital currency.
-    You are your bank, you control your funds, and nobody can trace your transfers
-    unless you allow them to do so.
+    Electroneum is a secure, public and decentralised digital currency.
+    You are your bank and you control your funds.
 grade: devel
 confinement: strict
 
@@ -12,20 +12,20 @@ apps:
     electroneumd:
         daemon: forking
         command: |
-          electroneumd-wrapper --detach --data-dir ${SNAP_COMMON} --config-file ${SNAP_USER_DATA}/etc/electroneumd.conf
+            electroneumd-wrapper --detach --data-dir ${SNAP_COMMON} --config-file ${SNAP_USER_DATA}/etc/electroneumd.conf
         plugs:
             - network
             - network-bind
     electroneum-wallet-rpc:
         command: |
-          electroneum-wallet-rpc --log-file ${SNAP_USER_DATA}
+            electroneum-wallet-rpc --log-file ${SNAP_USER_DATA}
         plugs:
             - home
             - network
             - network-bind
     electroneum-wallet-cli:
         command: |
-          electroneum-wallet-cli --log-file ${SNAP_USER_DATA}
+            electroneum-wallet-cli --log-file ${SNAP_USER_DATA}
         plugs:
             - home
             - network
@@ -33,7 +33,7 @@ apps:
 parts:
     cmake-build:
         plugin: cmake
-        configflags:
+        cmake-parameters:
             - -DBDB_STATIC=1
             - -DUPNP_STATIC=1
             - -DBoost_USE_STATIC_LIBS=1
@@ -55,8 +55,8 @@ parts:
             - doxygen
             - graphviz
         stage-packages:
-            - libminiupnpc10
-            - libunbound2
+            - libminiupnpc17
+            - libunbound8
             - libunwind8
         prime:
             - bin
